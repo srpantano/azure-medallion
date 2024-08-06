@@ -1,0 +1,9 @@
+{
+	"name": "medallion-adf-srp",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2896e653-724f-4d58-9a62-25471a2fd532",
+		"tenantId": "4bc3ddb4-ca89-40bb-a7a5-69a202b81fa7"
+	}
+}
