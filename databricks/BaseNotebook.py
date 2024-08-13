@@ -19,4 +19,21 @@
 
 # COMMAND ----------
 
-spark.sql('create database testing')
+#dbutils.fs.ls('/mnt/bronze/2024-08-12/SalesLT.Customer.parquet')
+
+# COMMAND ----------
+
+fileName = dbutils.widgets.get('fileName')
+tableSchema = dbutils.widgets.get('table_schema')
+tableName = dbutils.widgets.get('table_name')
+
+# COMMAND ----------
+
+#create database if it does not exists
+spark.sql(f'create database if not exists {tableSchema}')
+
+# COMMAND ----------
+
+filePath = f'/mnt/bronze/{fileName}'
+df = spark.read.format('parquet').load(filePath)
+df.write.mode('overwrite').saveAsTable(f'{tableSchema}.{tableName}')
